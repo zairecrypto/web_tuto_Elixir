@@ -39,4 +39,11 @@ defmodule Discuss.AuthController do
 
   end
 
+  def signout(conn, _params) do
+    conn
+    # |> put_flash(:info, "Bye!")
+    |> configure_session(drop: true)
+    |> redirect(to: topic_path(conn, :index))
+  end
+
 end

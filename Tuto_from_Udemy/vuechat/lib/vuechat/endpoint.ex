@@ -36,7 +36,7 @@ defmodule Vuechat.Endpoint do
   plug Plug.Session,
     store: :cookie,
     key: "_vuechat_key",
-    signing_salt: "ZgtbzjET"
+    signing_salt: "dFnguzDG"
 
   plug Vuechat.Router
 end

@@ -2,7 +2,7 @@ defmodule Vuechat.UserSocket do
   use Phoenix.Socket
 
   ## Channels
-  # channel "room:*", Vuechat.RoomChannel
+  channel "room:*", Vuechat.RoomChannel
 
   ## Transports
   transport :websocket, Phoenix.Transports.WebSocket

@@ -12,7 +12,7 @@ config :vuechat,
 # Configures the endpoint
 config :vuechat, Vuechat.Endpoint,
   url: [host: "localhost"],
-  secret_key_base: "TB4vMhZ5JicEdTs/jqVkdZboETTRjL9TTPUo3H51z5U+oCdZxAd3Qy9wv5wJCV5K",
+  secret_key_base: "wV/U1bpmlfnUuIcLEkKb91Cz4DjJEbzpnUmPpEnJie+HmySZYNZ6oXG/fv9+dQTD",
   render_errors: [view: Vuechat.ErrorView, accepts: ~w(html json)],
   pubsub: [name: Vuechat.PubSub,
            adapter: Phoenix.PubSub.PG2]
