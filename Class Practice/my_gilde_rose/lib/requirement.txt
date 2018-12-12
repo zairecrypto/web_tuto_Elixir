@@ -1,0 +1,22 @@
+TASK:
+- Add new features to the systemm so that we can begin selling a new category of item
+
+CURRENT SYSTEM:
+- sell_in : Sellinn value -> number of days we have to sell the item
+- quality : Quality value -> how valuable the item is
+=> selling_val-- and quality-- : at the end of each day 
+
+SPECS:
++ if sell_in < 0 -> quality-- * 2
++ quality is never negative
++ "Aged Brie" -> quality++ when day passes
++ “Sulfuras” -> quality previous days = quality now
++ quality < 50
++ “Backstage passes” -> quality++ when selling_val--
+	quality +2 -> days_left = 10 to 5
+	quality +3 -> days_left = 5 to 0
+	quality = 0 -> due_day
++ “Conjured” quality-- *2 
+
+IN_CODE:
+- methode: UpdateQuality

@@ -6,3 +6,6 @@ defmodule Discuss.PageControllerTest do
     assert html_response(conn, 200) =~ "Welcome to Phoenix!"
   end
 end
+
+
+

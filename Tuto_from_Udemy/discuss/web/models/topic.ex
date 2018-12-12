@@ -7,8 +7,7 @@ defmodule Discuss.Topic do
                                 # inside it must be a string
     end
 
-    @doc """
-    
+    @doc """   
 
         iex> struct = %Discuss.Topic{}
         %Discuss.Topic{

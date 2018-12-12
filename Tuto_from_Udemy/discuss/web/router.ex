@@ -23,6 +23,14 @@ defmodule Discuss.Router do
   #   put "/topics/:id", TopicController, :update
   # above restfull controller can be replaced by one resources only if it follows the restfull 
     resources "/", TopicController
+
+  end
+
+  scope "/auth", Discuss do
+    pipe_through :browser
+
+    get "/:provider", AuthController, :request
+    get "/:provider/callback", AuthController, :callback
   end
 
   # Other scopes may use custom stacks.
