@@ -2,7 +2,26 @@ defmodule Discuss.TopicController do
     use Discuss.Web, :controller
     alias Discuss.Topic
 
+    # calling a guard class to indicate where the plug RequireAuth must be executed
+    plug Discuss.Plugs.RequireAuth when action in [:new, :create, :edit, :update, :delete]
+    plug :check_topic_owner when action in [:update, :edit, :delete]
+
+
+    # let's create a function plug to manage the 
+    def check_topic_owner(conn, _params) do
+        %{params: %{"id" => topic_id}} = conn
+        if Repo.get(Topic, topic_id).user_id == conn.assigns.user.id do
+            conn
+        else
+            conn
+            |> put_flash(:info, "No Access Right to this topic")
+            |> redirect(to: topic_path(conn, :index))
+            |> halt()
+        end
+    end
+
     def new(conn, _params) do
+        
         changeset = Topic.changeset(%Topic{}, %{})
         render conn, "new.html", changeset: changeset
     end
@@ -10,7 +29,16 @@ defmodule Discuss.TopicController do
     def create(conn, %{"topic" => topic}) do
         # %Topic{} because we are creating a changeset from scratch,
         # changeset represent a change that we wont to make to our db
+
+        # conn.assigns[:user] is equivalent to conn.assigns.user
+
+
+
         changeset = Topic.changeset(%Topic{}, topic) 
+
+        changeset = conn.assigns.user
+            |> build_assoc(:topics)
+            |> Topic.changeset(topic)
 
         case Repo.insert(changeset) do
             {:ok, _topics}         -> 

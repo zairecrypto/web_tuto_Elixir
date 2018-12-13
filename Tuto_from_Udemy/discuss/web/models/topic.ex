@@ -5,6 +5,7 @@ defmodule Discuss.Topic do
         field :title, :string   # for a table name "topics", we expect that table
                                 # to have a single column called title and every value 
                                 # inside it must be a string
+        belongs_to :user, Discuss.User
     end
 
     @doc """   

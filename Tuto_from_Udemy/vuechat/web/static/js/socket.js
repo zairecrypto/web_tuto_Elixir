@@ -1,6 +1,6 @@
 import {Socket} from "phoenix"
 import Vue from 'vue'
-import MyApp from "../components/my-app.vue"
+import MyApp from "web/static/components/my-app.vue"
 
 let socket = new Socket("/socket", {params: {token: window.userToken}})
 socket.connect()
