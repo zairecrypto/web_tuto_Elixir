@@ -6,6 +6,7 @@ defmodule Discuss.Topic do
                                 # to have a single column called title and every value 
                                 # inside it must be a string
         belongs_to :user, Discuss.User
+        has_many :comments, Discuss.Comment
     end
 
     @doc """   

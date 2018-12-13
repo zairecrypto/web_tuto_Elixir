@@ -40,6 +40,7 @@ defmodule Discuss.AuthController do
   end
 
   def signout(conn, _params) do
+    IO.inspect(conn)
     conn
     # |> put_flash(:info, "Bye!")
     |> configure_session(drop: true)
