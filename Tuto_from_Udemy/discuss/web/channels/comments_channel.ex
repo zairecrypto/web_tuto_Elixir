@@ -13,6 +13,7 @@ defmodule Discuss.CommentsChannel do
         IO.inspect topic
         {:ok, %{comments: topic.comments}, assign(socket, :topic, topic)}
     end
+    
 
     def handle_in(name, %{"content" => content}, socket) do 
         topic = socket.assigns.topic
